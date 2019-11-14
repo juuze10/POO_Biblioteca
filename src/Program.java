@@ -11,6 +11,32 @@ public class Program {
 			}
 			String command[] = input.split(" ");
 			switch(command[0]) {
+			case "IN":
+			    break;
+			case "OUT":
+			    break;
+			case "RTO":
+			    break;
+			case "FR":
+			    break;
+			case "RA":
+			    break;
+			case "RE":
+			    break;
+			case "RC":
+			    break;
+			case "RT":
+			    break;
+			case "RO":
+			    break;
+			case "RL":
+			    break;
+			case "REO":
+			    break;
+			case "RDO":
+			    break;
+			case "DF":
+			    break;
 			default:
 				System.out.println("Instrução inválida");	
 			}
