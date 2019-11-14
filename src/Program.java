@@ -16,6 +16,7 @@ public class Program {
 				startNewSession(library, command);
 			    break;
 			case "OUT":
+				endSession(library);
 			    break;
 			case "RTO":
 			    break;
@@ -42,6 +43,16 @@ public class Program {
 			default:
 				System.out.println("Instrução inválida");	
 			}
+		}
+	}
+
+	private static void endSession(Library library) {
+		if(!library.hasSession()) {
+			System.out.println("Sem sessão iniciada.");
+		}
+		else {
+			library.endSession();
+			System.out.println("Sessão terminada.");
 		}
 	}
 
