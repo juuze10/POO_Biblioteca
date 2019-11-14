@@ -17,7 +17,7 @@ public class Program {
 			    break;
 			case "RTO":
 			    break;
-			case "FR":
+			case "RF":
 			    break;
 			case "RA":
 			    break;
