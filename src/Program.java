@@ -13,19 +13,7 @@ public class Program {
 			String command[] = input.split(" ");
 			switch(command[0]) {
 			case "IN":
-				String identifier = command[1];
-				if(library.hasSession()) {
-					System.out.println("Existe sessão iniciada.");
-				}
-				else {
-					if(!library.hasEmployee(identifier)) {
-						System.out.println("Funcionário inexistente.");
-					}
-					else {
-						library.newSession(identifier);
-						System.out.println("Sessão iniciada.");
-					}
-				}
+				startNewSession(library, command);
 			    break;
 			case "OUT":
 			    break;
@@ -53,6 +41,22 @@ public class Program {
 			    break;
 			default:
 				System.out.println("Instrução inválida");	
+			}
+		}
+	}
+
+	private static void startNewSession(Library library, String[] command) {
+		String identifier = command[1];
+		if(library.hasSession()) {
+			System.out.println("Existe sessão iniciada.");
+		}
+		else {
+			if(!library.hasEmployee(identifier)) {
+				System.out.println("Funcionário inexistente.");
+			}
+			else {
+				library.newSession(identifier);
+				System.out.println("Sessão iniciada.");
 			}
 		}
 	}
