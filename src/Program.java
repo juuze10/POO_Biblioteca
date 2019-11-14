@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Program {
 	public static void main(String[] args) {
+		Library library = null; // vai mudar
 		Scanner scanner = new Scanner(System.in);
 		while(scanner.hasNextLine()) {
 			String input = scanner.nextLine();
@@ -12,6 +13,19 @@ public class Program {
 			String command[] = input.split(" ");
 			switch(command[0]) {
 			case "IN":
+				String identifier = command[1];
+				if(library.hasSession()) {
+					System.out.println("Existe sessão iniciada.");
+				}
+				else {
+					if(!library.hasEmployee(identifier)) {
+						System.out.println("Funcionário inexistente.");
+					}
+					else {
+						library.newSession(identifier);
+						System.out.println("Sessão iniciada.");
+					}
+				}
 			    break;
 			case "OUT":
 			    break;
