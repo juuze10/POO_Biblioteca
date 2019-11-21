@@ -34,6 +34,7 @@ public class Program {
 				registerCollection(library, command);
 			    break;
 			case "RT":
+				registerTopic(library, command);
 			    break;
 			case "RO":
 			    break;
@@ -48,6 +49,17 @@ public class Program {
 			default:
 				System.out.println("Instrução inválida");	
 			}
+		}
+	}
+	
+	private static void registerTopic(Library library, String[] command) {
+		String topicName = command[1];
+		if(library.hasTopic(topicName)) {
+			System.out.println("Tema existente.");
+		}
+		else {
+			int topicIdentifier = library.registerTopic(topicName);
+			System.out.println("Tema registado com código " + topicIdentifier);
 		}
 	}
 

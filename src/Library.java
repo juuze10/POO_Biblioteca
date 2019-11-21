@@ -26,4 +26,8 @@ public interface Library {
 
 	int registerCollection(String collectionName);
 
+	int registerTopic(String topicName);
+
+	boolean hasTopic(String topicName);
+
 }
