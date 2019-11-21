@@ -28,6 +28,7 @@ public class Program {
 				registerAuthor(library, command);
 			    break;
 			case "RE":
+				registerEditor(library, command);
 			    break;
 			case "RC":
 			    break;
@@ -46,6 +47,17 @@ public class Program {
 			default:
 				System.out.println("Instrução inválida");	
 			}
+		}
+	}
+
+	private static void registerEditor(Library library, String[] command) {
+		String editorName = command[1];
+		if(library.hasEditor(editorName)) {
+			System.out.println("Editora existente.");
+		}
+		else {
+			int editorIdentifier = library.registerEditor(editorName);
+			System.out.println("Editora registada com código " + editorIdentifier);
 		}
 	}
 

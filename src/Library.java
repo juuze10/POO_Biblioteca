@@ -17,5 +17,9 @@ public interface Library {
 	boolean hasAuthor(String authorName);
 
 	int registerAutor(String authorName);
+	
+	boolean hasEditor(String editorName);
+
+	int registerEditor(String editorName);
 
 }
