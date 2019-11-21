@@ -25,6 +25,7 @@ public class Program {
 				registerEmployee(library, command);
 			    break;
 			case "RA":
+				registerAuthor(library, command);
 			    break;
 			case "RE":
 			    break;
@@ -45,6 +46,17 @@ public class Program {
 			default:
 				System.out.println("Instrução inválida");	
 			}
+		}
+	}
+
+	private static void registerAuthor(Library library, String[] command) {
+		String authorName = command[1];
+		if(library.hasAuthor(authorName)) {
+			System.out.println("Autor existente.");
+		}
+		else {
+			int authorIdentifier = library.registerAutor(authorName);
+			System.out.println("Autor registado com código " + authorIdentifier);
 		}
 	}
 

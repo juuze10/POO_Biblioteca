@@ -14,4 +14,8 @@ public interface Library {
 
 	int registerEmployee(String employeeName);
 
+	boolean hasAuthor(String authorName);
+
+	int registerAutor(String authorName);
+
 }
