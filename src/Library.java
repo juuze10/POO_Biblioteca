@@ -12,4 +12,6 @@ public interface Library {
 
 	void registerDocumentType(String documentType);
 
+	int registerEmployee(String employeeName);
+
 }

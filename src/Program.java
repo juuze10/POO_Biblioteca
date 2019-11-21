@@ -22,6 +22,7 @@ public class Program {
 				registerDocumentType(library, command);
 			    break;
 			case "RF":
+				registerEmployee(library, command);
 			    break;
 			case "RA":
 			    break;
@@ -44,6 +45,17 @@ public class Program {
 			default:
 				System.out.println("Instrução inválida");	
 			}
+		}
+	}
+
+	private static void registerEmployee(Library library, String[] command) {
+		String employeeName = command[1];
+		if(library.hasEmployee(employeeName)) {
+			System.out.println("Funcionário existente.");
+		}
+		else {
+			int employeeIdentifier = library.registerEmployee(employeeName);
+			System.out.println("Funcionário registado com código " + employeeIdentifier);
 		}
 	}
 
