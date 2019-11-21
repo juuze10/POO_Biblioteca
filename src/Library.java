@@ -8,4 +8,8 @@ public interface Library {
 
 	void endSession();
 
+	boolean hasDocumentType(String documentType);
+
+	void registerDocumentType(String documentType);
+
 }

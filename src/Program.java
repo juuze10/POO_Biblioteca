@@ -19,6 +19,7 @@ public class Program {
 				endSession(library);
 			    break;
 			case "RTO":
+				registerDocumentType(library, command);
 			    break;
 			case "RF":
 			    break;
@@ -43,6 +44,17 @@ public class Program {
 			default:
 				System.out.println("Instrução inválida");	
 			}
+		}
+	}
+
+	private static void registerDocumentType(Library library, String[] command) {
+		String documentType = command[1];
+		if(library.hasDocumentType(documentType)) {
+			System.out.println("Tipo de obra existente.");
+		}
+		else {
+			library.registerDocumentType(documentType);
+			System.out.println("Tipo de obra registado com sucesso.");
 		}
 	}
 
