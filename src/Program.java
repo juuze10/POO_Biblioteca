@@ -31,6 +31,7 @@ public class Program {
 				registerEditor(library, command);
 			    break;
 			case "RC":
+				registerCollection(library, command);
 			    break;
 			case "RT":
 			    break;
@@ -47,6 +48,17 @@ public class Program {
 			default:
 				System.out.println("Instrução inválida");	
 			}
+		}
+	}
+
+	private static void registerCollection(Library library, String[] command) {
+		String collectionName = command[1];
+		if(library.hasCollection(collectionName)) {
+			System.out.println("Coleção existente.");
+		}
+		else {
+			int collectionIdentifier = library.registerCollection(collectionName);
+			System.out.println("Coleção registada com código " + collectionIdentifier);
 		}
 	}
 

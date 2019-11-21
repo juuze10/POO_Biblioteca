@@ -22,4 +22,8 @@ public interface Library {
 
 	int registerEditor(String editorName);
 
+	boolean hasCollection(String collectionName);
+
+	int registerCollection(String collectionName);
+
 }
