@@ -30,4 +30,14 @@ public interface Library {
 
 	boolean hasTopic(String topicName);
 
+	boolean hasAuthorCode(String authorCode);
+
+	boolean hasEditorCode(String editorCode);
+
+	boolean hasSubjectCode(String subjectCode);
+
+	boolean hasDocument(String title, String authorCode, String editorCode);
+
+	int createDocument(String title, String authorCode, String editorCode);
+
 }
