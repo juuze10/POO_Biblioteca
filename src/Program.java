@@ -13,67 +13,35 @@ public class Program {
 			String commands[] = input.split(" ");
 			switch(commands[0]) {
 			case "IN":
-				String identifier = commands[1];
-				if(library.hasSession()) {
-					System.out.println("Existe sessão iniciada.");
-				}
-				else {
-					if(!library.hasEmployee(identifier)) {
-						System.out.println("Funcionário inexistente.");
-					}
-					else {
-						library.newSession(identifier);
-						System.out.println("Sessão iniciada.");
-					}
-				}
+				commandIN(library, commands);
 			    break;
 			case "OUT":
-				endSession(library);
+				commandOUT(library);
 			    break;
 			case "RTO":
-				registerDocumentType(library, commands);
+				commandRTO(library, commands);
 			    break;
 			case "RF":
-				registerEmployee(library, commands);
+				commandRF(library, commands);
 			    break;
 			case "RA":
-				registerAuthor(library, commands);
+				commandRA(library, commands);
 			    break;
 			case "RE":
-				registerEditor(library, commands);
+				commandRE(library, commands);
 			    break;
 			case "RC":
-				registerCollection(library, commands);
+				commandRC(library, commands);
 			    break;
 			case "RT":
-				registerTopic(library, commands);
+				commandRT(library, commands);
 			    break;
 			case "RO":
-				String title = commands[1];
-				String[] parameters = scanner.nextLine().split(" ");
-				String authorCode = parameters[0];
-				String editorCode = parameters[1];
-				String year = parameters[2];
-				String subjectCode = parameters[3];
-				String edition = parameters[4];
-				if(!library.hasAuthorCode(authorCode)) {
-					System.out.println("Autor inexistente.");
-				}
-				else if(!library.hasEditorCode(editorCode)) {
-					System.out.println("Editora inexistente.");
-				}
-				else if(!library.hasSubjectCode(subjectCode)) {
-					System.out.println("Tema inexistente.");
-				}
-				else if(library.hasDocument(title, authorCode, editorCode)) {
-					System.out.println("Obra existente.");
-				}
-				else {
-					int documentCode = library.createDocument(title, authorCode, editorCode);
-					System.out.println("Obra registada com código " + documentCode);
-				}
+				commandRO(library, scanner, commands);
 			    break;
 			case "RL":
+				String readerName = commands[1];
+				
 			    break;
 			case "REO":
 			    break;
@@ -86,8 +54,34 @@ public class Program {
 			}
 		}
 	}
+
+	private static void commandRO(Library library, Scanner scanner, String[] commands) {
+		String title = commands[1];
+		String[] parameters = scanner.nextLine().split(" ");
+		String authorCode = parameters[0];
+		String editorCode = parameters[1];
+		String year = parameters[2];
+		String subjectCode = parameters[3];
+		String edition = parameters[4];
+		if(!library.hasAuthorCode(authorCode)) {
+			System.out.println("Autor inexistente.");
+		}
+		else if(!library.hasEditorCode(editorCode)) {
+			System.out.println("Editora inexistente.");
+		}
+		else if(!library.hasSubjectCode(subjectCode)) {
+			System.out.println("Tema inexistente.");
+		}
+		else if(library.hasDocument(title, authorCode, editorCode)) {
+			System.out.println("Obra existente.");
+		}
+		else {
+			int documentCode = library.createDocument(title, authorCode, editorCode);
+			System.out.println("Obra registada com código " + documentCode);
+		}
+	}
 	
-	private static void registerTopic(Library library, String[] command) {
+	private static void commandRT(Library library, String[] command) {
 		String topicName = command[1];
 		if(library.hasTopic(topicName)) {
 			System.out.println("Tema existente.");
@@ -98,7 +92,7 @@ public class Program {
 		}
 	}
 
-	private static void registerCollection(Library library, String[] command) {
+	private static void commandRC(Library library, String[] command) {
 		String collectionName = command[1];
 		if(library.hasCollection(collectionName)) {
 			System.out.println("Coleção existente.");
@@ -109,7 +103,7 @@ public class Program {
 		}
 	}
 
-	private static void registerEditor(Library library, String[] command) {
+	private static void commandRE(Library library, String[] command) {
 		String editorName = command[1];
 		if(library.hasEditor(editorName)) {
 			System.out.println("Editora existente.");
@@ -120,7 +114,7 @@ public class Program {
 		}
 	}
 
-	private static void registerAuthor(Library library, String[] command) {
+	private static void commandRA(Library library, String[] command) {
 		String authorName = command[1];
 		if(library.hasAuthor(authorName)) {
 			System.out.println("Autor existente.");
@@ -131,7 +125,7 @@ public class Program {
 		}
 	}
 
-	private static void registerEmployee(Library library, String[] command) {
+	private static void commandRF(Library library, String[] command) {
 		String employeeName = command[1];
 		if(library.hasEmployee(employeeName)) {
 			System.out.println("Funcionário existente.");
@@ -142,7 +136,7 @@ public class Program {
 		}
 	}
 
-	private static void registerDocumentType(Library library, String[] command) {
+	private static void commandRTO(Library library, String[] command) {
 		String documentType = command[1];
 		if(library.hasDocumentType(documentType)) {
 			System.out.println("Tipo de obra existente.");
@@ -153,7 +147,7 @@ public class Program {
 		}
 	}
 
-	private static void endSession(Library library) {
+	private static void commandOUT(Library library) {
 		if(!library.hasSession()) {
 			System.out.println("Sem sessão iniciada.");
 		}
@@ -163,7 +157,19 @@ public class Program {
 		}
 	}
 
-	private static void startNewSession(Library library, String[] command) {
-		
+	private static void commandIN(Library library, String[] commands) {
+		String identifier = commands[1];
+		if(library.hasSession()) {
+			System.out.println("Existe sessão iniciada.");
+		}
+		else {
+			if(!library.hasEmployee(identifier)) {
+				System.out.println("Funcionário inexistente.");
+			}
+			else {
+				library.newSession(identifier);
+				System.out.println("Sessão iniciada.");
+			}
+		}
 	}
 }
