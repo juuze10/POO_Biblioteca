@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Program {
 	public static void main(String[] args) {
-		Library library = null; // vai mudar
+		Library library = new LibraryClass();
 		Scanner scanner = new Scanner(System.in);
 		while(scanner.hasNextLine()) {
 			String input = scanner.nextLine();
@@ -43,10 +43,7 @@ public class Program {
 				commandRL(library, commands);
 			    break;
 			case "REO":
-				String documentCode = commands[1];
-				String readerCode = commands[2];
-				String date = commands[3];
-				
+				commandREO(library, commands);
 			    break;
 			case "RDO":
 			    break;
@@ -55,6 +52,31 @@ public class Program {
 			default:
 				System.out.println("Instrução inválida");	
 			}
+		}
+	}
+
+	private static void commandREO(Library library, String[] commands) {
+		String documentCode = commands[1];
+		String readerCode = commands[2];
+		String date = commands[3];
+		if(!library.hasDocumentCode(documentCode)) {
+			System.out.println("Obra inexistente.");
+		}
+		else if(!library.hasReaderCode(readerCode)) {
+			System.out.println("Leitor inexistente.");
+		}
+		else if(!library.canLoan(readerCode)) {
+			System.out.println("Limite de empréstimos excedido.");
+		}
+		else if(library.isBlocked(readerCode)) {
+			System.out.println("Leitor bloeuqado.");
+		}
+		else if(!library.isAvailableForLoan(documentCode)) {
+			System.out.println("Obra indisponível.");
+		}
+		else {
+			library.createLoan(documentCode, readerCode, date);
+			System.out.println("Empréstimo registado com sucesso.");
 		}
 	}
 
