@@ -40,4 +40,20 @@ public interface Library {
 
 	int createDocument(String title, String authorCode, String editorCode);
 
+	boolean hasReader(String readerName, String readerContact);
+
+	int createReader(String readerName, String readerContact);
+
+	boolean hasDocumentCode(String documentCode);
+
+	boolean hasReaderCode(String readerCode);
+
+	boolean isBlocked(String readerCode);
+
+	boolean canLoan(String readerCode);
+
+	boolean isAvailableForLoan(String documentCode);
+
+	void createLoan(String documentCode, String readerCode, String date);
+
 }

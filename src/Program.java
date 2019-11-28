@@ -40,10 +40,13 @@ public class Program {
 				commandRO(library, scanner, commands);
 			    break;
 			case "RL":
-				String readerName = commands[1];
-				
+				commandRL(library, commands);
 			    break;
 			case "REO":
+				String documentCode = commands[1];
+				String readerCode = commands[2];
+				String date = commands[3];
+				
 			    break;
 			case "RDO":
 			    break;
@@ -52,6 +55,18 @@ public class Program {
 			default:
 				System.out.println("Instrução inválida");	
 			}
+		}
+	}
+
+	private static void commandRL(Library library, String[] commands) {
+		String readerName = commands[1];
+		String readerContact = commands[2];
+		if(library.hasReader(readerName, readerContact)) {
+			System.out.println("Leitor existente.");
+		}
+		else {
+			int readerCode = library.createReader(readerName, readerContact);
+			System.out.println("Leitor registado com código " + readerCode);
 		}
 	}
 
